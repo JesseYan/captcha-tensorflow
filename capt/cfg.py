@@ -23,9 +23,9 @@ CHAR_SET_LEN = len(gen_char_set)
 
 print('CHAR_SET_LEN:', CHAR_SET_LEN)
 
-home_root = '/home/harmo'  # 在不同操作系统下面Home目录不一样
-workspace = join(home_root, 'work/crack/my-capt-data/capt-python-36')  # 用于工作的训练数据集
-model_path = join(home_root, 'work/crack/model')
+home_root = '/root/workspace/yanjiayi/data/captcha'  # 在不同操作系统下面Home目录不一样
+workspace = join(home_root, 'train_data')  # 用于工作的训练数据集
+model_path = join(home_root, 'model')
 model_tag = 'crack_capcha.model'
 save_model = join(model_path, model_tag)
 

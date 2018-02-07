@@ -7,8 +7,7 @@ import numpy as np
 from PIL import Image
 from captcha.image import ImageCaptcha  # pip install captcha
 
-import capt
-from capt.cfg import gen_char_set
+from cfg import gen_char_set
 
 
 # 验证码一般都无视大小写；验证码长度4个字符
