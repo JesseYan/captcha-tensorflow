@@ -3,6 +3,7 @@
 """
 import tensorflow as tf
 
+from utils import logger
 from cfg import MAX_CAPTCHA, CHAR_SET_LEN, tb_log_path, save_model
 from cnn_sys import crack_captcha_cnn, Y, keep_prob, X
 from data_iter import get_next_batch
@@ -51,6 +52,7 @@ def train_crack_captcha_cnn():
         batch_x, batch_y = get_next_batch(64)  # 64
         _, loss_ = sess.run([optimizer, loss], feed_dict={X: batch_x, Y: batch_y, keep_prob: 0.95})
         print(step, 'loss:\t', loss_)
+        logger.debug('%d loss:\t%s' % (step, loss_))
 
         step += 1
 
@@ -66,6 +68,7 @@ def train_crack_captcha_cnn():
         batch_x_test, batch_y_test = get_next_batch(256)  # 新生成的数据集个来做测试
         acc = sess.run(accuracy, feed_dict={X: batch_x_test, Y: batch_y_test, keep_prob: 1.})
         print(step, 'acc---------------------------------\t', acc)
+        logger.debug('%d acc---------------------------------:\t%s' % (step, acc))
 
         # 终止条件
         if acc > 0.98:

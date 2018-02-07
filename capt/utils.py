@@ -3,6 +3,25 @@ import numpy as np
 from cfg import MAX_CAPTCHA, CHAR_SET_LEN
 
 
+import logging
+
+logger = logging.getLogger("captcha")
+logger.setLevel(logging.DEBUG)
+# 建立一个filehandler来把日志记录在文件里，级别为debug以上
+fh = logging.FileHandler("/tmp/train.log")
+fh.setLevel(logging.DEBUG)
+# 建立一个streamhandler来把日志打在CMD窗口上，级别为error以上
+ch = logging.StreamHandler()
+ch.setLevel(logging.ERROR)
+# 设置日志格式
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+ch.setFormatter(formatter)
+fh.setFormatter(formatter)
+#将相应的handler添加在logger对象中
+logger.addHandler(ch)
+logger.addHandler(fh)
+
+
 def char2pos(c):
     """
     字符验证码，字符串转成位置信息
